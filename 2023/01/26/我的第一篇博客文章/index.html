@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>我的第一篇博客文章 | Hexo</title>
+  <title>this | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="第一章内容  第二章">
+  <meta name="description" content="this的绑定分为四种情况，分别是默认绑定，隐式绑定，显示绑定，已经new绑定绑定优先级：new绑定&gt;显示绑定（bind）&gt;隐式绑定&gt;默认绑定 1.默认绑定1234function foo() &amp;#123;    console.log(this) &#x2F;&#x2F; window&amp;#125;foo();  函数直接被调用，没有进行任何对象的关联。 独立函数调用进行默认绑定，绑定在window">
 <meta property="og:type" content="article">
-<meta property="og:title" content="我的第一篇博客文章">
+<meta property="og:title" content="this">
 <meta property="og:url" content="http://example.com/2023/01/26/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="第一章内容  第二章">
+<meta property="og:description" content="this的绑定分为四种情况，分别是默认绑定，隐式绑定，显示绑定，已经new绑定绑定优先级：new绑定&gt;显示绑定（bind）&gt;隐式绑定&gt;默认绑定 1.默认绑定1234function foo() &amp;#123;    console.log(this) &#x2F;&#x2F; window&amp;#125;foo();  函数直接被调用，没有进行任何对象的关联。 独立函数调用进行默认绑定，绑定在window">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-01-26T13:57:46.000Z">
-<meta property="article:modified_time" content="2023-01-26T13:59:13.082Z">
+<meta property="article:modified_time" content="2023-02-06T13:31:51.355Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -161,7 +161,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      我的第一篇博客文章
+      this
     </h1>
   
 
@@ -174,9 +174,40 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><p>内容</p>
-<hr>
-<h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2>
+        <p><strong>this的绑定分为四种情况，分别是默认绑定，隐式绑定，显示绑定，已经new绑定<br>绑定优先级：new绑定&gt;显示绑定（bind）&gt;隐式绑定&gt;默认绑定</strong></p>
+<h2 id="1-默认绑定"><a href="#1-默认绑定" class="headerlink" title="1.默认绑定"></a>1.默认绑定</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>) <span class="comment">// window</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">foo</span>();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>函数直接被调用，没有进行任何对象的关联。</li>
+<li>独立函数调用进行默认绑定，绑定在window对象 上，此时的this指向windows全局。</li>
+</ul>
+<ul>
+<li><strong>什么情况下，进行默认绑定</strong></li>
+</ul>
+<p><strong>独立函数调用的时候（即函数没有被绑定到某个对象上进行调用）</strong><br>##隐式绑定</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>) <span class="comment">//obj对象</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;why&#x27;</span>,</span><br><span class="line">    <span class="attr">foo</span>: foo</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.<span class="title function_">foo</span>();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如上图所示，foo（）的调用位置为obj.foo（）来进行调用，所以foo（）调用的的this<br>会隐式的被绑定在obj的对象上去。</li>
+<li><em>案例-变化</em>*<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>); <span class="comment">//obj1 对象</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj1 = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;obj1&#x27;</span>,</span><br><span class="line">    <span class="attr">foo</span>: foo</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj2 = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;obj2&#x27;</span>,</span><br><span class="line">    <span class="attr">obj1</span>: obj1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj2.<span class="property">obj1</span>.<span class="title function_">foo</span>();</span><br></pre></td></tr></table></figure></li>
+<li>我们通过obj2又引用了obj1对象，再通过obj1对象调用foo函数；那么foo调用的位置<br>上其实还是obj1被绑定了this。</li>
+</ul>
+<p><strong>隐式丢失</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj1 = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;obj1&#x27;</span>,</span><br><span class="line">    <span class="attr">foo</span>: foo</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//将obj1的值赋值给bar</span></span><br><span class="line"><span class="keyword">var</span> bar = obj1.<span class="property">foo</span>；</span><br><span class="line"><span class="title function_">bar</span>() <span class="comment">// this指向windows</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>因为foo最终被调用的位置是bar，而bar在进行调用时没有绑定任何的对象，也就没有形成隐式绑定，这相当于是一种默认绑定。</li>
+<li><em>什么情况下是隐式绑定？</em>*</li>
+<li><em>调用位置中，是通过某个对象发起的函数调用。</em>*<br>##显示绑定</li>
+<li><em>通过call，apply与bind来对this进行绑定（明确this的绑定对象）</em>*<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fubction <span class="title function_">foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo.<span class="title function_">call</span>(<span class="variable language_">window</span>); <span class="comment">// window</span></span><br><span class="line">foo.<span class="title function_">call</span>( &#123;<span class="attr">name</span>: <span class="string">&#x27;why&#x27;</span>&#125; ); <span class="comment">// &#123; name: &#x27;why&#x27; &#125;</span></span><br><span class="line">foo.<span class="title function_">call</span>(<span class="number">123</span>); <span class="comment">// Number对象，存放123</span></span><br></pre></td></tr></table></figure>
+##new绑定<br>在js中将函数当成一种构造函数来进行使用,当我们使用new关键字的时候:</li>
+</ul>
+<p>1.创建一个全新的对象；<br>2.这个新对象会被执行Prototype连接；<br>3.这个新对象会绑定到函数调用的this上（this的绑定在这个步骤完成）；<br>4.如果函数没有返回其他对象，表达式会返回这个新对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建Person</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span> (name) &#123;</span><br><span class="line">    <span class="title function_">consolelog</span>(<span class="variable language_">this</span>); <span class="comment">// Person&#123;&#125;</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = name <span class="comment">// Person &#123; name: &#x27;why&#x27; &#125;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&#x27;why&#x27;</span>);</span><br><span class="line">cobsole.<span class="title function_">log</span>(p)</span><br></pre></td></tr></table></figure>
+<p>##箭头函数</p>
+<ul>
+<li>首先我们要认识一点，箭头函数是没有this的，他的this是有他的外层作用域来决定的<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    <span class="attr">data</span>: [],</span><br><span class="line">    <span class="attr">getData</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// 模拟获取数据</span></span><br><span class="line">            <span class="keyword">var</span> res = [<span class="string">&#x27;abc&#x27;</span>, <span class="string">&#x27;cba&#x27;</span>, <span class="string">&#x27;nba&#x27;</span>];</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">data</span>.<span class="title function_">push</span>(...res)</span><br><span class="line">        &#125;,<span class="number">1000</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.<span class="title function_">getData</span>();</span><br></pre></td></tr></table></figure>
+如上图所示，我们需要定时的在data中添加数据我们将settimeout中的函数改写成箭头函<br>数那么，settimeout中的函数就没有this，他的this就是指向它上层的this，它上层为get<br>Data函数，getData函数被obj所调用，那么getData的this指向为obj这个对象，那么在<br>箭头函数中的this指向为obj这个对象，如果将getData换个函数换成箭头函数，那么定时<br>器内部的箭头函数的this指向就为windows。</li>
+<li><em>注意：settimeout中写普通函数其内部的this指向全局windows，setTimeout内部是通过apply进行绑定的this对象，并且绑定的是全局对象；</em>*<br><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/hYm0JgBI25grNG_2sCRlTA">coderWhy讲解</a></li>
+</ul>
+
       
 
       
