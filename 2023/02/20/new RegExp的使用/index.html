@@ -16,7 +16,7 @@
 <meta property="og:description" content="什么是new RegExp定义：引用类型是一种数据结构，用于将数据和功能组织在一起，引用类型有时候也被称为对象定义">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-02-20T10:31:48.493Z">
-<meta property="article:modified_time" content="2023-02-20T12:14:08.101Z">
+<meta property="article:modified_time" content="2023-02-20T12:17:00.416Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -176,20 +176,19 @@
       
         <h2 id="什么是new-RegExp"><a href="#什么是new-RegExp" class="headerlink" title="什么是new RegExp"></a>什么是new RegExp</h2><p><strong>定义：引用类型是一种数据结构，用于将数据和功能组织在一起，引用类型有时候也被称为对象定义</strong></p>
 <span id="more"></span>
-
 <h2 id="RegExp-类型"><a href="#RegExp-类型" class="headerlink" title="RegExp 类型"></a>RegExp 类型</h2><p>标志flag的含义：<br> 1.g ：表示全局（global）模式，即模式将被应用于所有字符串，而非在发现第一个匹配项时立即停止；<br> 2.i ：表示不区分大小写（case-insensitive）模式，即在确定匹配项时忽略模式与字符串的大小写；<br> 3.m ：表示多行（multiline）模式，即在到达一行文本末尾时还会继续查找下一行中是否存在与模式匹配的项。</p>
  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> expression = <span class="keyword">new</span> <span class="title class_">RegExp</span>(<span class="string">&quot;pattern &quot;</span>, <span class="string">&quot;flags&quot;</span>);</span><br><span class="line"><span class="comment">//  pattern 睁着表达式</span></span><br><span class="line"><span class="comment">// flags 用于指定全局匹配、区分大小写的匹配和多行匹配</span></span><br><span class="line">   </span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> <span class="title class_">RegExp</span>(<span class="string">&quot;\\[bc\\]at&quot;</span>, <span class="string">&quot;i&quot;</span>);</span><br><span class="line"><span class="comment">// 匹配第一个&quot;[bc]at,不区分大小写&quot;</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="RegExp对象的方法"><a href="#RegExp对象的方法" class="headerlink" title="RegExp对象的方法"></a>RegExp对象的方法</h2><p>RegExp 对象有 3 个方法：test()、exec() 以及 compile();</p>
-<h3 id="test"><a href="#test" class="headerlink" title="test()"></a>test()</h3><p>test() 方法检索字符串中的指定值。返回值是 true 或 false；</p>
+<h2 id="RegExp对象的方法"><a href="#RegExp对象的方法" class="headerlink" title="RegExp对象的方法"></a>RegExp对象的方法</h2><p><strong>RegExp 对象有 3 个方法：test()、exec() 以及 compile();</strong></p>
+<h3 id="test"><a href="#test" class="headerlink" title="test()"></a>test()</h3><p><strong>test() 方法检索字符串中的指定值。返回值是 true 或 false；</strong></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> patt1=<span class="keyword">new</span> <span class="title class_">RegExp</span>(<span class="string">&quot;e&quot;</span>);</span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(patt1.<span class="title function_">test</span>(<span class="string">&quot;The best things in life are free&quot;</span>)); </span><br></pre></td></tr></table></figure>
 
 <p>由于该字符串中存在字母 “e”，以上代码的输出将是：true;</p>
-<h3 id="exec"><a href="#exec" class="headerlink" title="exec()"></a>exec()</h3><p>exec() 方法检索字符串中的指定值。返回值是被找到的值。如果没有发现匹配，则返回 null;</p>
+<h3 id="exec"><a href="#exec" class="headerlink" title="exec()"></a>exec()</h3><p><strong>exec() 方法检索字符串中的指定值。返回值是被找到的值。如果没有发现匹配，则返回 null;</strong></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> patt1=<span class="keyword">new</span> <span class="title class_">RegExp</span>(<span class="string">&quot;e&quot;</span>);</span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(patt1.<span class="title function_">exec</span>(<span class="string">&quot;The best things in life are free&quot;</span>));</span><br></pre></td></tr></table></figure>
 
 <p>由于该字符串中存在字母 “e”，以上代码的输出将是：e<br>在exec()方法中，可以向 RegExp 对象添加第二个参数，以设定检索。例如，如果需要找到所有某个字符的所有存在，则可以使用 “g” 参数 (“global”)；<br>在使用 “g” 参数时，exec() 的工作原理如下：<br>1.找到第一个 “e”，并存储其位置;<br>2.如果再次运行 exec()，则从存储的位置开始检索，并找到下一个 “e”，并存储其位置;</p>
-<h3 id="compile"><a href="#compile" class="headerlink" title="compile()"></a>compile()</h3><p>compile() 方法用于改变 RegExp.compile() 既可以改变检索模式，也可以添加或删除第二个参数;</p>
+<h3 id="compile"><a href="#compile" class="headerlink" title="compile()"></a>compile()</h3><p><strong>compile() 方法用于改变 RegExp.compile() 既可以改变检索模式，也可以添加或删除第二个参数;</strong></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> patt1=<span class="keyword">new</span> <span class="title class_">RegExp</span>(<span class="string">&quot;e&quot;</span>);</span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(patt1.<span class="title function_">test</span>(<span class="string">&quot;The best things in life are free&quot;</span>));</span><br><span class="line">patt1.<span class="title function_">compile</span>(<span class="string">&quot;d&quot;</span>);</span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(patt1.<span class="title function_">test</span>(<span class="string">&quot;The best things in life are free&quot;</span>));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>由于字符串中存在 “e”，而没有 “d”，以上代码的输出是：true false</p>
