@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>JS的内存管理 | Hexo</title>
+  <title>new RegExp的使用 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.JS的执行顺序在我们学习JS的内存管理上我们先要来学习JS文件的运行过程,首先我们我们需要知道js引擎在执行js代码时，也会从上到下进行 词法分析、语法分析、语义分析 等处理，并在代码解析完成后生成AST（抽象语法树），最终根据AST生成CPU可以执行的机器码并执行">
+  <meta name="description" content="什么是new RegExp定义：引用类型是一种数据结构，用于将数据和功能组织在一起，引用类型有时候也被称为对象定义">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS的内存管理">
-<meta property="og:url" content="http://example.com/2023/02/19/JS%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/index.html">
+<meta property="og:title" content="new RegExp的使用">
+<meta property="og:url" content="http://example.com/2023/02/20/new%20RegExp%E7%9A%84%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="1.JS的执行顺序在我们学习JS的内存管理上我们先要来学习JS文件的运行过程,首先我们我们需要知道js引擎在执行js代码时，也会从上到下进行 词法分析、语法分析、语义分析 等处理，并在代码解析完成后生成AST（抽象语法树），最终根据AST生成CPU可以执行的机器码并执行">
+<meta property="og:description" content="什么是new RegExp定义：引用类型是一种数据结构，用于将数据和功能组织在一起，引用类型有时候也被称为对象定义">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-02-19T10:21:00.327Z">
-<meta property="article:modified_time" content="2023-02-19T10:23:12.801Z">
+<meta property="article:published_time" content="2023-02-20T10:31:48.493Z">
+<meta property="article:modified_time" content="2023-02-20T12:14:08.101Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -154,55 +154,45 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-JS的内存管理" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-new RegExp的使用" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      JS的内存管理
+      new RegExp的使用
     </h1>
   
 
         
-        <a href="/2023/02/19/JS%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" class="archive-article-date">
-  	<time datetime="2023-02-19T10:21:00.327Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-19</time>
+        <a href="/2023/02/20/new%20RegExp%E7%9A%84%E4%BD%BF%E7%94%A8/" class="archive-article-date">
+  	<time datetime="2023-02-20T10:31:48.493Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-20</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1-JS的执行顺序"><a href="#1-JS的执行顺序" class="headerlink" title="1.JS的执行顺序"></a>1.JS的执行顺序</h3><p>在我们学习JS的内存管理上我们先要来学习JS文件的运行过程,首先我们我们需要知道js引擎在执行js代码时，也会从上到下进行 词法分析、语法分析、语义分析 等处理，并在代码解析完成后生成AST（抽象语法树），最终根据AST生成CPU可以执行的机器码并执行</p>
+        <h2 id="什么是new-RegExp"><a href="#什么是new-RegExp" class="headerlink" title="什么是new RegExp"></a>什么是new RegExp</h2><p><strong>定义：引用类型是一种数据结构，用于将数据和功能组织在一起，引用类型有时候也被称为对象定义</strong></p>
 <span id="more"></span>
-<p>在js进行执行的时候会处理2个阶段性的内容，一个是<strong>编译阶段</strong>，一个是<strong>执行阶段</strong>，而2个阶段将会做不同的工作<br><strong>编译阶段</strong>：该阶段会进行执行上下文的创建，包括创建变量对象(VO)(此时会被初始化为undefined)、建立作用域链、确定 this 指向等。每进入一个不同的运行环境。V8 都会创建一个新的执行上下文。<br><strong>执行阶段</strong>：将编译阶段中创建的执行上下文压入调用栈，并成为正在运行的执行上下文。代码执行结束后，将其弹出调用栈。（这里有一个VO - AO的过程：JavaScript对变量赋值时变量被用到，此时变量对象会转为活动对象，转换后的活动对象才可被访问）</p>
-<p>在知道js会进行编译阶段和执行阶段后，我们引入了2个重要的概念，<strong>全局执行上下文</strong>与<strong>作用域链</strong><br><strong>作用域链</strong>我们在之前的一篇文章中已经进行了详细的讲解，这里我们就不做过多的讲解，重点上我们将来讲解一下对于<strong>全局指向上下文</strong>的理解<br>首先我们需要知道当JS去执行一串代码的时候，就会创建对应的执行上下文，通俗一点讲就是当执行到一个函数的时候，就会进行准备工作，这里的“准备工作”，就叫做“执行上下文”<br>而JS中的执行上下文可以分为3中<br>● <strong>全局执行上下文（Global）</strong>：代码首次执行时候的默认环境，任何不在函数内部的代码都在全局上下文中。它会执行两件事：创建一个全局的 window 对象（浏览器的情况下），并且设置 this 的值等于这个全局对象。一个程序中只会有一个全局执行上下文<br>● <strong>函数执行上下文（Function）</strong>：每当一个函数被调用时，都会为该函数创建一个新的上下文，每个函数都有它自己的执行上下文，不过是在函数被调用时创建的。函数上下文可以有任意多个。每当一个新的执行上下文被创建，它会按定义的顺序执行一系列步骤<br>● <strong>eval执行上下文（Eval）</strong>：当eval函数内部的文本执行的时候</p>
-<p>你可以拥有任意数量的函数上下文,但全局上下文只能拥有一个。每一次函数调用都会创建一个新的上下文，它会创建一个私有域，函数内部做出的所有声明都会放在这个私有域中，并且这些声明在当前函数内部的变量外部无法访问，这就是我们所说的作用域，但如果是函数内部去访问自身没有的变量，他就会按着他的父级一层一层的去寻找当前需要的变量，最终找到全局变量上面去，这就是我们所说的作用域链</p>
-<p><strong>同时我们也需要了解什么是执行栈</strong><br>执行上下文栈(下文简称执行栈)也叫调用栈，执行栈用于存储代码执行期间创建的所有上下文，具有LIFO（Last In First Out后进先出，也就是先进后出）的特性。用通俗的话来讲，执行上下文栈就是一个<br>来装执行上下文的一个容器<br>JS代码首次运行，都会先创建一个全局执行上下文并压入到执行栈中，之后每当有函数被调用，都会创建一个新的函数执行上下文并压入栈内；由于执行栈LIFO的特性，所以可以理解为，JS代码执行完毕前在执行栈底部永远有个全局执行上下文。<br>关于执行栈，有5点需要记住：<br>● <strong>单线程</strong><br>● <strong>同步执行</strong><br>● <strong>一个全局上下文</strong><br>● <strong>无数的函数上下文</strong><br>● <strong>每次函数调用都会创建一个新的执行上下文，即使是调用自身</strong><br>在对执行上下文与作用域链有了初步的了解后，我们来初步的学习JS是如何去查找我们使用的变量的</p>
-<h3 id="2-JS标识符查找变量"><a href="#2-JS标识符查找变量" class="headerlink" title="2.JS标识符查找变量"></a>2.JS标识符查找变量</h3><p>当在特定上下文中为读取或写入而引用一个标识符时，必须通过搜索确定这个标识符表示什么。搜索开始于作用域链前端，以给定的名称搜索对应的标识符。如果局部上下文中找到该标识符，则搜索停止，变量确定。如果没有找到变量名，则继续沿作用域链搜索。如果没有找到标识符，通常报错。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> color = <span class="string">&#x27;blue&#x27;</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getColor</span>(<span class="params"></span>) &#123;</span><br><span class="line"><span class="keyword">return</span> color;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">getColor</span>()); <span class="comment">// &#x27;blue&#x27;</span></span><br></pre></td></tr></table></figure>
 
-<p>如上图所示，调用函数getColor，返回color变量，先在函数执行上下文中进行查找color变量，没有返现color变量，之后便通过作用域链向上级查找，即全局执行上下文中进行查找，发现全局执行上下文中存在color变量的定义，便将’blue’的值赋值给了color，之后调用函数返回’bule’<br>对于整个搜索过程，引用局部变量会让搜索自动停止，不继续搜索下烈红色:<br>一级变量对象。也就是说，如果局部上下问中有一个同名的标识符，那就不能在该上下文中引用父上下文中的同名标识符</p>
-<h3 id="3-JS垃圾回收"><a href="#3-JS垃圾回收" class="headerlink" title="3.JS垃圾回收"></a>3.JS垃圾回收</h3><h4 id="1-标记清除"><a href="#1-标记清除" class="headerlink" title="1.标记清除"></a>1.标记清除</h4><p>js最常用的垃圾回收策略是标记清理。当变量进入上下文，比如在函数内部给一个变量时，这个变量会被加上存在于上下文中的标记。在上下文中的变量，逻辑上讲，永远不应该释放它们的内存，因为只要上下文中的代码在运行，就有可能用到它们。当变量离开上下文时，会被加上离开上下文的标记。<br>给变量加标记的方式有很多种。比如，当变量进入上下文时，反转某一位，或者可以维护“在上下文中”和“不在上下文中”两个变量列表，可以把变量从一个列表转移到另一个列表。标记过程的实现不重要，关键是策略。<br>垃圾回收程序运行的时候，会标记内存中存储的所有变量。然后它会将所有在上下文中的变量，以及被在上下文中的变量引用的变量的标记去掉。在此之后再被加上标记的变量就是待删除的了，原因是任何在上下文中的变量都访问不到它们。随后垃圾回收程序做一次内存清理，销毁带标记的所有值并收回它们的内存。</p>
-<h4 id="2-引用计数"><a href="#2-引用计数" class="headerlink" title="2.引用计数"></a>2.引用计数</h4><p>另一种没那么常用的垃圾回收策略是引用计数（reference counting）。其思路是对每个值都记录它被 引用的次数。声明变量并给它赋一个引用值时，这个值的引用数为 1。如果同一个值又被赋给另一个变 量，那么引用数加 1。类似地，如果保存对该值引用的变量被其他值给覆盖了，那么引用数减 1。当一 个值的引用数为 0 时，就说明没办法再访问到这个值了，因此可以安全地收回其内存了。垃圾回收程序 下次运行的时候就会释放引用数为 0 的值的内存<br>引用计数存在的问题：循环引用，垃圾回收判断引用时如果不清除内部的属性引用，那么这些循环引用的对象会一直驻留在内存中</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">T</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> a = &#123;&#125;; <span class="comment">// a的应勇次数为0</span></span><br><span class="line">  <span class="keyword">var</span> b = a; 	<span class="comment">// a的引用次数 + 1 为 1</span></span><br><span class="line">  <span class="keyword">var</span> c = a;  <span class="comment">// a的引用次数 + 1 为 2</span></span><br><span class="line">  <span class="keyword">var</span> b = &#123;&#125;; <span class="comment">// a的引用次数 - 1 为 1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="RegExp-类型"><a href="#RegExp-类型" class="headerlink" title="RegExp 类型"></a>RegExp 类型</h2><p>标志flag的含义：<br> 1.g ：表示全局（global）模式，即模式将被应用于所有字符串，而非在发现第一个匹配项时立即停止；<br> 2.i ：表示不区分大小写（case-insensitive）模式，即在确定匹配项时忽略模式与字符串的大小写；<br> 3.m ：表示多行（multiline）模式，即在到达一行文本末尾时还会继续查找下一行中是否存在与模式匹配的项。</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> expression = <span class="keyword">new</span> <span class="title class_">RegExp</span>(<span class="string">&quot;pattern &quot;</span>, <span class="string">&quot;flags&quot;</span>);</span><br><span class="line"><span class="comment">//  pattern 睁着表达式</span></span><br><span class="line"><span class="comment">// flags 用于指定全局匹配、区分大小写的匹配和多行匹配</span></span><br><span class="line">   </span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> <span class="title class_">RegExp</span>(<span class="string">&quot;\\[bc\\]at&quot;</span>, <span class="string">&quot;i&quot;</span>);</span><br><span class="line"><span class="comment">// 匹配第一个&quot;[bc]at,不区分大小写&quot;</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="3-性能"><a href="#3-性能" class="headerlink" title="3.性能"></a>3.性能</h4><p>垃圾回收程序会周期性运行，如果内存中分配了很多变量，则可能造成性能损失，因此垃圾回收的时间调度很重要。尤其是在内存有限的移动设备上，垃圾回收有可能会明显拖慢渲染的速度和帧速率。开发者不知道什么时候运行时会收集垃圾，因此最好的办法是在写代码时就要做到：无论什么时候开始收集垃圾，都能让它尽快结束工作。</p>
-<h4 id="4-内存管理"><a href="#4-内存管理" class="headerlink" title="4.内存管理"></a>4.内存管理</h4><p>js运行在一个内存管理和垃圾回收都很特殊的环境，分配给浏览器的内存通常比分配给桌面软件的少很多，分配给移动浏览器的更少。出于安全考虑，为了避免运行大量js的网页耗尽系统内存而导致操作系统崩溃。内存限制不仅影响变量分配，也影响调用栈以及能够同时在一个线程中执行的语句数量<br>将内存占用量保持在一个较小的值可以让页面性能更好。优化内存占用的最佳手段就是保证在执行代码时只保存必要的数据。如果数据不再必要，那么把它设置为null ，从而释放其引用。这也可以叫作解除引用。这个建议最适合全局变量和全局对象的属性。局部变量在超出作用域后会被自动解除引用</p>
-<h4 id="5-内存泄漏"><a href="#5-内存泄漏" class="headerlink" title="5.内存泄漏"></a>5.内存泄漏</h4><p>本质上讲，内存泄漏是当一块内存不再被应用程序使用的时候，由于某种原因，这块内存没有返还给操作系统或空闲内存池的现象。<br>通常的内存泄漏有一下几种情况<br><strong>1.没有使用任何关键字声明变量</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Name</span>(<span class="params"></span>) &#123;</span><br><span class="line">name = <span class="string">&#x27;张三&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="RegExp对象的方法"><a href="#RegExp对象的方法" class="headerlink" title="RegExp对象的方法"></a>RegExp对象的方法</h2><p>RegExp 对象有 3 个方法：test()、exec() 以及 compile();</p>
+<h3 id="test"><a href="#test" class="headerlink" title="test()"></a>test()</h3><p>test() 方法检索字符串中的指定值。返回值是 true 或 false；</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> patt1=<span class="keyword">new</span> <span class="title class_">RegExp</span>(<span class="string">&quot;e&quot;</span>);</span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(patt1.<span class="title function_">test</span>(<span class="string">&quot;The best things in life are free&quot;</span>)); </span><br></pre></td></tr></table></figure>
 
-<p>JS解释器会把变量name 当作window 的属性来创建（相当于window.name = ‘张三’ ）。在window 对象上创建的属性，只要window 本身不被清理就不会消失。这个问题很容易解决，只要在变量声明前头加上var 、let 或const 关键字即可，这样变量就会在函数执行完毕后离开作用域。</p>
-<p><strong>2.定时器也可能会悄悄地导致内存泄漏。定时器的回调通过闭包引用了外部变量</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="string">&#x27;张三&#x27;</span>;</span><br><span class="line"><span class="built_in">setInterval</span>( <span class="function">() =&gt;</span> &#123;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(name);</span><br><span class="line">&#125;, <span class="number">100</span>);</span><br></pre></td></tr></table></figure>
+<p>由于该字符串中存在字母 “e”，以上代码的输出将是：true;</p>
+<h3 id="exec"><a href="#exec" class="headerlink" title="exec()"></a>exec()</h3><p>exec() 方法检索字符串中的指定值。返回值是被找到的值。如果没有发现匹配，则返回 null;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> patt1=<span class="keyword">new</span> <span class="title class_">RegExp</span>(<span class="string">&quot;e&quot;</span>);</span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(patt1.<span class="title function_">exec</span>(<span class="string">&quot;The best things in life are free&quot;</span>));</span><br></pre></td></tr></table></figure>
 
-<p>只要定时器一直运行，回调函数中引用的name 就会一直占用内存。垃圾回收程序当然知道这一点，因而就不会清理外部变量。</p>
-<p><strong>3.闭包引起内存泄漏</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> outer = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line"><span class="keyword">let</span> name = <span class="string">&#x27;张三&#x27;</span>;</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line"><span class="keyword">return</span> name;</span><br><span class="line">&#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>由于该字符串中存在字母 “e”，以上代码的输出将是：e<br>在exec()方法中，可以向 RegExp 对象添加第二个参数，以设定检索。例如，如果需要找到所有某个字符的所有存在，则可以使用 “g” 参数 (“global”)；<br>在使用 “g” 参数时，exec() 的工作原理如下：<br>1.找到第一个 “e”，并存储其位置;<br>2.如果再次运行 exec()，则从存储的位置开始检索，并找到下一个 “e”，并存储其位置;</p>
+<h3 id="compile"><a href="#compile" class="headerlink" title="compile()"></a>compile()</h3><p>compile() 方法用于改变 RegExp.compile() 既可以改变检索模式，也可以添加或删除第二个参数;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> patt1=<span class="keyword">new</span> <span class="title class_">RegExp</span>(<span class="string">&quot;e&quot;</span>);</span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(patt1.<span class="title function_">test</span>(<span class="string">&quot;The best things in life are free&quot;</span>));</span><br><span class="line">patt1.<span class="title function_">compile</span>(<span class="string">&quot;d&quot;</span>);</span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(patt1.<span class="title function_">test</span>(<span class="string">&quot;The best things in life are free&quot;</span>));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>用outer() 会导致分配给</p>
-<p>烈红色:<br>用outer() 会导致分配给name 的内存被泄漏。以上代码执行后创建了一个内部闭包，只要返回的函数存在就不能清理name ，因为闭包一直在引用着它。</p>
+<p>由于字符串中存在 “e”，而没有 “d”，以上代码的输出是：true false</p>
 
       
 
@@ -282,7 +272,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/02/19/JS%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/02/20/new%20RegExp%E7%9A%84%E4%BD%BF%E7%94%A8/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -296,18 +286,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2023/02/20/new%20RegExp%E7%9A%84%E4%BD%BF%E7%94%A8/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          new RegExp的使用
-        
-      </div>
-    </a>
   
-  
-    <a href="/2023/02/15/forEach%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E6%94%B9%E5%8F%98%E5%8E%9F%E6%95%B0%E7%BB%84/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">forEach是否能改变原数组</div>
+    <a href="/2023/02/19/JS%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JS的内存管理</div>
       <i class="icon-circle-right"></i>
     </a>
   
