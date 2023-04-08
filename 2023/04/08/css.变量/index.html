@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Hexo</title>
+  <title>css变量 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/page/2/index.html">
+  <meta name="description" content="变量申明声明变量的时候，变量名前面要加两根连词线（–）。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css变量">
+<meta property="og:url" content="http://example.com/2023/04/08/css.%E5%8F%98%E9%87%8F/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="变量申明声明变量的时候，变量名前面要加两根连词线（–）。">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-04-08T08:57:58.823Z">
+<meta property="article:modified_time" content="2023-04-08T09:10:26.528Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -150,32 +154,73 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-forEach是否可以改变原数组" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-css.变量" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/02/15/forEach%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E6%94%B9%E5%8F%98%E5%8E%9F%E6%95%B0%E7%BB%84/">forEach是否能改变原数组</a>
+    <h1 class="article-title" itemprop="name">
+      css变量
     </h1>
   
 
         
-        <a href="/2023/02/15/forEach%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E6%94%B9%E5%8F%98%E5%8E%9F%E6%95%B0%E7%BB%84/" class="archive-article-date">
-  	<time datetime="2023-02-15T13:09:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-15</time>
+        <a href="/2023/04/08/css.%E5%8F%98%E9%87%8F/" class="archive-article-date">
+  	<time datetime="2023-04-08T08:57:58.823Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>forEach是否能改变原数组</strong><br><strong>基本数据类型无法改变，引用数据类型可以改变</strong></p>
-        
+        <h2 id="变量申明"><a href="#变量申明" class="headerlink" title="变量申明"></a>变量申明</h2><p>声明变量的时候，变量名前面要加两根连词线（–）。</p>
+<span id="more"></span>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">body &#123;</span><br><span class="line">    --<span class="attr">foo</span>: #7F583F;</span><br><span class="line">    --<span class="attr">bar</span>: #<span class="variable constant_">F7EFD2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>body选择器里面声明了两个变量：–foo和–bar。<br>它们与color、font-size等正式属性没有什么不同，只是没有默认含义。所以 CSS 变量（CSS variable）又叫做”CSS 自定义属性”（CSS custom properties）。因为变量与自定义的 CSS 属性其实是一回事。<br>你可能会问，为什么选择两根连词线（–）表示变量？因为$foo被 Sass 用掉了，@foo被 Less 用掉了。为了不产生冲突，官方的 CSS 变量就改用两根连词线了。</p>
+<h2 id="var-函数"><a href="#var-函数" class="headerlink" title="var() 函数"></a>var() 函数</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a &#123;</span><br><span class="line">    <span class="attr">color</span>: <span class="title function_">var</span>(--foo);</span><br><span class="line">    text-decoration-<span class="attr">color</span>: <span class="title function_">var</span>(--bar);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>var()函数还可以使用第二个参数，表示变量的默认值。如果该变量不存在，就会使用这个默认值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">color</span>: <span class="title function_">var</span>(--foo, #7F583F);</span><br></pre></td></tr></table></figure>
+
+<h2 id="变量值的类型"><a href="#变量值的类型" class="headerlink" title="变量值的类型"></a>变量值的类型</h2><p><strong>如果变量值是一个字符串，可以与其他字符串拼接。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--<span class="attr">bar</span>: <span class="string">&#x27;hello&#x27;</span>;</span><br><span class="line">--<span class="attr">foo</span>: <span class="title function_">var</span>(--bar)<span class="string">&#x27; world&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>如果变量值是数值，不能与数值单位直接连用。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">foo</span> &#123;</span><br><span class="line">--<span class="attr">gap</span>: <span class="number">20</span>;</span><br><span class="line"><span class="comment">/* 无效 */</span></span><br><span class="line">margin-<span class="attr">top</span>: <span class="title function_">var</span>(--gap)px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码中，数值与单位直接写在一起，这是无效的。必须使用calc()函数，将它们连接。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">foo</span> &#123;</span><br><span class="line">--<span class="attr">gap</span>: <span class="number">20</span>;</span><br><span class="line">margin-<span class="attr">top</span>: <span class="title function_">calc</span>(<span class="title function_">var</span>(--gap) * 1px);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>如果变量值带有单位，就不能写成字符串。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 无效 */</span>.<span class="property">foo</span> &#123;  --<span class="attr">foo</span>: <span class="string">&#x27;20px&#x27;</span>;  font-<span class="attr">size</span>: <span class="title function_">var</span>(--foo);&#125;</span><br><span class="line"><span class="comment">/* 有效 */</span>.<span class="property">foo</span> &#123;  --<span class="attr">foo</span>: 20px;  font-<span class="attr">size</span>: <span class="title function_">var</span>(--foo);&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>同一个 CSS 变量，可以在多个选择器内声明。读取的时候，优先级最高的声明生效。这与 CSS 的”层叠”（cascade）规则是一致的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    :root &#123; --<span class="attr">color</span>: blue; &#125;</span><br><span class="line">    div &#123; --<span class="attr">color</span>: green; &#125;</span><br><span class="line">    #alert &#123; --<span class="attr">color</span>: red; &#125;</span><br><span class="line">    * &#123; <span class="attr">color</span>: <span class="title function_">var</span>(--color); &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>蓝色<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>绿色<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;alert&quot;</span>&gt;</span>红色<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>上面代码中，三个选择器都声明了–color变量。不同元素读取这个变量的时候，会采用优先级最高的规则，因此三段文字的颜色是不一样的。<br>这就是说，变量的作用域就是它所在的选择器的有效范围。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">body &#123;</span><br><span class="line">--<span class="attr">foo</span>: #7F583F;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.<span class="property">content</span> &#123;</span><br><span class="line">--<span class="attr">bar</span>: #<span class="variable constant_">F7EFD2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码中，变量–foo的作用域是body选择器的生效范围，–bar的作用域是.content选择器的生效范围。<br><strong>由于这个原因，全局的变量通常放在根元素:root里面，确保任何选择器都可以读取它们。</strong></p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -184,16 +229,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/02/15/forEach%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E6%94%B9%E5%8F%98%E5%8E%9F%E6%95%B0%E7%BB%84/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/04/08/css.%E5%8F%98%E9%87%8F/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2023/04/04/argument%E4%B8%8Earg%E7%9A%84%E5%8C%BA%E5%88%AB/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">argument与arg的区别</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -213,390 +317,14 @@
 
 
 
-
-  
-    <article id="post-手写promise" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/02/13/%E6%89%8B%E5%86%99promise/">手写promise</a>
-    </h1>
-  
-
-        
-        <a href="/2023/02/13/%E6%89%8B%E5%86%99promise/" class="archive-article-date">
-  	<time datetime="2023-02-13T12:39:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>手写promise的方法</strong></p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/02/13/%E6%89%8B%E5%86%99promise/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-js防抖与节流" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/02/12/js%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81/">防抖与节流</a>
-    </h1>
-  
-
-        
-        <a href="/2023/02/12/js%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81/" class="archive-article-date">
-  	<time datetime="2023-02-12T11:08:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>什么是防抖？什么是节流？</strong><br><strong>1.防抖就是在一定时间内，仅最后一次生效的任务</strong><br><strong>2.节流就是在一定时间内，仅第一次生效的任务</strong></p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/02/12/js%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-js闭包" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/02/10/js%E9%97%AD%E5%8C%85/">js闭包</a>
-    </h1>
-  
-
-        
-        <a href="/2023/02/10/js%E9%97%AD%E5%8C%85/" class="archive-article-date">
-  	<time datetime="2023-02-10T11:27:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>什么是闭包？</strong><br><strong>一个函数和它周围状态的引用捆绑在一起的组合</strong></p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/02/10/js%E9%97%AD%E5%8C%85/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-？ .与？？问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/01/26/%EF%BC%9F%20.%E4%B8%8E%EF%BC%9F%EF%BC%9F%E9%97%AE%E9%A2%98/">?.与??</a>
-    </h1>
-  
-
-        
-        <a href="/2023/01/26/%EF%BC%9F%20.%E4%B8%8E%EF%BC%9F%EF%BC%9F%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2023-01-26T13:57:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="使用-‘-’进行调用"><a href="#使用-‘-’进行调用" class="headerlink" title="使用 ‘.’进行调用"></a>使用 ‘.’进行调用</h3><p>在js中，我们要对对象中的某个属性进行查找或者修改的时候我们通过啊，a.b来进行调用b属性，也通过通过链式调用来调用更深层次的属性，如：a.b.c.d来调用a对象中的d属性用. 对对象进行调用的时候，当需要调用一个对象的一个没有的属性时候会返回undifinde属性，当我们再次调用对象的孙子属性，就相当于调用ubdifinde的属性，会报错.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/01/26/%EF%BC%9F%20.%E4%B8%8E%EF%BC%9F%EF%BC%9F%E9%97%AE%E9%A2%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-this问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/01/26/this%E9%97%AE%E9%A2%98/">this</a>
-    </h1>
-  
-
-        
-        <a href="/2023/01/26/this%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2023-01-26T13:57:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>this的绑定分为四种情况，分别是默认绑定，隐式绑定，显示绑定，已经new绑定<br>绑定优先级：new绑定&gt;显示绑定（bind）&gt;隐式绑定&gt;默认绑定</strong></p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/01/26/this%E9%97%AE%E9%A2%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/01/26/hello-world/">欢迎来到我的博客</a>
-    </h1>
-  
-
-        
-        <a href="/2023/01/26/hello-world/" class="archive-article-date">
-  	<time datetime="2023-01-26T13:26:36.875Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>welcome my blog</strong></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/01/26/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -619,8 +347,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
