@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | Hexo</title>
+  <title>codemirror的学习 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/page/3/index.html">
+  <meta name="description" content="codemirror是一款代码编辑器的插件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="codemirror的学习">
+<meta property="og:url" content="http://example.com/2023/07/13/codemirror%E7%9A%84%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="codemirror是一款代码编辑器的插件">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-07-12T16:25:01.903Z">
+<meta property="article:modified_time" content="2023-07-12T16:47:23.969Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -60,7 +64,7 @@
 			</ul>
 		</nav>
     <nav>
-        总文章数 22
+        总文章数 20
     </nav>
 		<nav class="header-smart-menu">
     		
@@ -160,79 +164,176 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-codemirror的学习" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/01/26/this%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2023-01-26T13:57:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-26</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/01/26/this%E9%97%AE%E9%A2%98/">this</a>
+    <h1 class="article-title" itemprop="name">
+      codemirror的学习
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/01/26/hello-world/" class="archive-article-date">
-  	<time datetime="2023-01-26T13:26:36.875Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-26</time>
+        <!--显示阅读次数-->
+        
+          <br/>
+          <a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+          <span class="icon-sort"></span>
+          <span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+            阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+          </span>
+          </a>
+        
+        <!--显示阅读次数完毕-->
+        
+        <a href="/2023/07/13/codemirror%E7%9A%84%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
+  	<time datetime="2023-07-12T16:25:01.903Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-13</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/01/26/hello-world/">欢迎来到我的博客</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>codemirror是一款代码编辑器的插件</p>
+<span id="more"></span>
+<h2 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入codemirror</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">CodeMirror</span> <span class="keyword">from</span> <span class="string">&#x27;codemirror/lib/codemirror&#x27;</span>;</span><br><span class="line"><span class="comment">// 核心的样式</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;codemirror/lib/codemirror.css&#x27;</span></span><br><span class="line"><span class="comment">// 主题</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;codemirror/theme/cobalt.css&#x27;</span></span><br><span class="line"><span class="comment">// 高亮识别库（高亮sql）</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;codemirror/mode/sql/sql.js&#x27;</span></span><br><span class="line"><span class="comment">//代码补全提示（基本的提示补全）</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;codemirror/addon/hint/show-hint.css&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./addon/sint/show-hint.js&#x27;</span>;</span><br><span class="line"><span class="comment">// sql补全</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./addon/sint/sql-hint.js&#x27;</span>;</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
+<h2 id="创建实例"><a href="#创建实例" class="headerlink" title="创建实例"></a>创建实例</h2><p><strong>方法一</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myCodeMirror = <span class="title class_">CodeMirror</span>(<span class="variable constant_">DOM</span>实例, &#123;</span><br><span class="line">  <span class="attr">value</span>: <span class="variable constant_">XXX</span>,</span><br><span class="line">  <span class="attr">mode</span>:  <span class="variable constant_">XXX</span>,</span><br><span class="line">  ...</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><strong>方法二</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="property">coder</span> = <span class="title class_">CodeMirror</span>.<span class="title function_">fromTextArea</span>(</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">$refs</span>.<span class="property">textarea</span>,</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">coderOptions</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>直接去调用codemirror的fromTextArea（）方法，接收的2个参数与上同理</p>
+<h2 id="简单的引用创建一个codeMirror实例"><a href="#简单的引用创建一个codeMirror实例" class="headerlink" title="简单的引用创建一个codeMirror实例"></a>简单的引用创建一个codeMirror实例</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">textarea</span> <span class="attr">ref</span>=<span class="string">&quot;textarea&quot;</span> <span class="attr">v-model</span>=<span class="string">&quot;value&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span></span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="comment">// 核心的样式</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">import</span> <span class="string">&#x27;codemirror/lib/codemirror.css&#x27;</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="comment">// 主题</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">import</span> <span class="string">&#x27;codemirror/theme/cobalt.css&#x27;</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="comment">//  高亮识别库</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">import</span> <span class="string">&#x27;codemirror/mode/sql/sql.js&#x27;</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="comment">//代码补全提示</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">import</span> <span class="string">&#x27;codemirror/addon/hint/show-hint.css&#x27;</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="comment">// import &#x27;codemirror/addon/hint/show-hint.js&#x27;;</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="comment">// import &#x27;codemirror/addon/hint/sql-hint.js&#x27;;</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="comment">// 后续要对源码内容进行修改，所以提取出来复写</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">import</span> <span class="string">&#x27;./addon/sint/show-hint.js&#x27;</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">import</span> <span class="string">&#x27;./addon/sint/sql-hint.js&#x27;</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="comment">// 自动补全括号</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">import</span> <span class="string">&#x27;codemirror/addon/edit/closebrackets.js&#x27;</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="comment">// 引入codemirror</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">const</span> <span class="title class_">CodeMirror</span> = <span class="built_in">require</span>(<span class="string">&#x27;codemirror/lib/codemirror&#x27;</span>)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">import</span> <span class="title class_">Vue</span> <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">import</span> <span class="title class_">App</span> <span class="keyword">from</span> <span class="string">&#x27;./app.vue&#x27;</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="attr">name</span>: <span class="string">&#x27;codeEditor&#x27;</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    data () &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">return</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="attr">value</span>: <span class="string">&#x27;&#x27;</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="comment">// 模拟假数据</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="attr">paramsData</span>: [<span class="string">&#x27;select&#x27;</span>, <span class="string">&#x27;dsdsd&#x27;</span>, <span class="string">&#x27;sddw&#x27;</span>, <span class="string">&#x27;12339924&#x27;</span>, <span class="string">&#x27;dw1&#x27;</span>, <span class="string">&#x27;1sdsd&#x27;</span>, </span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                         <span class="string">&#x27;1dwee&#x27;</span>, <span class="string">&#x27;1dere&#x27;</span>, <span class="string">&#x27;1gdfgd&#x27;</span>, <span class="string">&#x27;1egg&#x27;</span>, <span class="string">&#x27;1gdd&#x27;</span>, <span class="string">&#x27;dwds1&#x27;</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                         <span class="string">&#x27;sddw&#x27;</span>,<span class="string">&#x27;sddw&#x27;</span>,<span class="string">&#x27;sddw&#x27;</span>,<span class="string">&#x27;sddw&#x27;</span>,<span class="string">&#x27;sddw&#x27;</span>],</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="attr">coderOptions</span>: &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="attr">value</span>: <span class="string">&#x27;&#x27;</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="attr">lint</span>: <span class="literal">true</span>, <span class="comment">// 代码出错提示</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="attr">theme</span>: <span class="string">&#x27;cobalt&#x27;</span>,  <span class="comment">// 选择主题样式</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="attr">tabSize</span>: <span class="number">4</span>, <span class="comment">// tab键位的宽度，设置为4个字符</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="comment">// lineNumbers: true, // 在编辑器左侧显示行号</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="attr">cursorHeight</span>: <span class="number">1</span>, <span class="comment">//光标高度，默认是1</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="attr">lineWrapping</span>: <span class="literal">true</span>, <span class="comment">// 文字过长时，是换行(wrap)还是滚动(scroll),默认false为滚动设置为true改为换行</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="attr">showCursorWhenSelecting</span>: <span class="literal">true</span>, <span class="comment">// 文本选中时显示光标</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="attr">smartIndent</span>: <span class="literal">true</span>, <span class="comment">// 智能缩进</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="attr">completeSingle</span>: <span class="literal">false</span>, <span class="comment">// 当匹配只有一项的时候是否自动补全</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="attr">autoCloseBrackets</span>: <span class="literal">true</span>, <span class="comment">//自动补全括号</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="attr">modes</span>: <span class="string">&#x27;text/c-mysql&#x27;</span>, <span class="comment">// 支持sql高亮</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    mounted () &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="comment">// 初始化</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="variable language_">this</span>.<span class="title function_">init</span>()</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="attr">methods</span>: &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        init () &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="comment">// 初始化编辑器实例，把 Textarea 替换成编辑器</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="variable language_">this</span>.<span class="property">coder</span> = <span class="title class_">CodeMirror</span>.<span class="title function_">fromTextArea</span>(</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="variable language_">this</span>.<span class="property">$refs</span>.<span class="property">textarea</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="variable language_">this</span>.<span class="property">coderOptions</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            )</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="variable language_">this</span>.<span class="property">coder</span>.<span class="title function_">on</span>(<span class="string">&#x27;cursorActivity&#x27;</span>, <span class="variable language_">this</span>.<span class="property">_inputRead</span>)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        _inputRead (cm, keybEvent) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        	<span class="variable language_">this</span>.<span class="property">coder</span>.<span class="title function_">showHint</span>()</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">&#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>codemirror插件的配置参数有许多，这这里我只是选用我所要运用到的参数来进行配置，如果需要进行其他效果参数的配置，可以在官网进行查阅<br>同时codemirror可以用on与off来进行事件的绑定与监听，上图中我通过 this.coder.on(‘keydown’, this._inputRead)来对键盘按下的事件来进行监听，当我们按下键盘的时候就调用codemirror的showHint方法，showHint是codemirror内置的显示提示的方法<br><a target="_blank" rel="noopener" href="https://www.tun6.com/projects/code_mirror//api/">官方中文地址</a></p>
 
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/07/13/codemirror%E7%9A%84%E5%AD%A6%E4%B9%A0/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2023/06/11/ts%E4%B8%ADinterface%E4%B8%8Etype%E5%8C%BA%E5%88%AB/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ts中interface与type区别</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -256,8 +357,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
