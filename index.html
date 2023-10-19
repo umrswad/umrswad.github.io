@@ -60,7 +60,7 @@
 			</ul>
 		</nav>
     <nav>
-        总文章数 23
+        总文章数 24
     </nav>
 		<nav class="header-smart-menu">
     		
@@ -161,6 +161,185 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-webpack" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/09/24/webpack/">webpack</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+        
+        <!--显示阅读次数完毕-->
+        
+        <a href="/2023/09/24/webpack/" class="archive-article-date">
+  	<time datetime="2023-09-24T12:39:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-09-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="什么是webpack？"><a href="#什么是webpack？" class="headerlink" title="什么是webpack？"></a>什么是webpack？</h1><blockquote>
+<p><strong>webpack</strong> 是一个用于现代 JavaScript 应用程序的 _静态模块打包工具_。当 webpack 处理应用程序时，它会在内部从一个或多个入口点构建一个 <a target="_blank" rel="noopener" href="https://webpack.docschina.org/concepts/dependency-graph/">依赖图(dependency graph)</a>，然后将你项目中所需的每一个模块组合成一个或多个 _bundles（包）_，它们均为静态资源，用于展示你的内容。</p>
+</blockquote>
+<h1 id="webpack的7大核心"><a href="#webpack的7大核心" class="headerlink" title="webpack的7大核心"></a>webpack的7大核心</h1><ul>
+<li><p>入口（entry）</p>
+</li>
+<li><p>输出（output）</p>
+</li>
+<li><p>加载器（loader）</p>
+</li>
+<li><p>插件（plugin）</p>
+</li>
+<li><p>模式（mode）</p>
+</li>
+<li><p>浏览器兼容（Browser Compatibility）</p>
+</li>
+<li><p>环境(environment)</p>
+<h2 id="入口（entry）"><a href="#入口（entry）" class="headerlink" title="入口（entry）"></a>入口（entry）</h2><p>入口就是入口起点，就是值webpack要从哪个模块文件开始构建打包</p>
+</li>
+<li><p>在webpack.config.js文件中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">entry</span>: <span class="string">&#x27;./path/to/my/entry/file.js&#x27;</span>,<span class="comment">// 写入你要进入的文件地址</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li><p>在vue.congig.js文件中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">configureWebpack</span>: &#123;</span><br><span class="line">    <span class="attr">entry</span>: <span class="string">&#x27;./path/to/my/entry/file.js&#x27;</span>, <span class="comment">// 写入你要进入的文件地址</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="输出（output）"><a href="#输出（output）" class="headerlink" title="输出（output）"></a>输出（output）</h2><p>输出（output）就是告诉 webpack 在哪里输出它所创建的 _bundle（包）_，以及如何去命名这些文件。主要输出文件的默认值是 ./dist/main.js，其他生成文件默认放置在 ./dist 文件夹中。</p>
+</li>
+<li><p>在webpack.config.js文件中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">entry</span>: <span class="string">&#x27;./path/to/my/entry/file.js&#x27;</span>, <span class="comment">// 写入你要进入的文件地址</span></span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">path</span>: path.<span class="title function_">resolve</span>(__dirname, <span class="string">&#x27;dist&#x27;</span>), <span class="comment">// 写入你要输出的文件地址</span></span><br><span class="line">    <span class="attr">filename</span>: <span class="string">&#x27;my-first-webpack.bundle.js&#x27;</span>, <span class="comment">// 写入你要进入的文件名</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li><p>在vue.congig.js文件中</p>
+</li>
+</ul>
+<p>通过configureWebpack配置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">configureWebpack</span>: &#123;</span><br><span class="line">    <span class="attr">entry</span>: <span class="string">&#x27;./src/my-entry-file.js&#x27;</span>, <span class="comment">// 写入你要进入的文件地址</span></span><br><span class="line">    <span class="attr">output</span>: &#123;</span><br><span class="line">      <span class="attr">path</span>: path.<span class="title function_">resolve</span>(__dirname, <span class="string">&#x27;dist&#x27;</span>), <span class="comment">// 写入你要输出的文件地址</span></span><br><span class="line">      <span class="attr">filename</span>: <span class="string">&#x27;my-bundle.js&#x27;</span>, <span class="comment">// 写入你要进入的文件名</span></span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>在chainWebpack配置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">chainWebpack</span>: <span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 链式调用清除默认入口，并添加新的入口和使用新的输出路径和文件名。</span></span><br><span class="line">    config</span><br><span class="line">      .<span class="title function_">entry</span>(<span class="string">&#x27;app&#x27;</span>)</span><br><span class="line">      .<span class="title function_">clear</span>()<span class="comment">// 清除默认入口</span></span><br><span class="line">      .<span class="title function_">add</span>(<span class="string">&#x27;./src/my-entry-file.js&#x27;</span>); <span class="comment">// 添加新的入口</span></span><br><span class="line"></span><br><span class="line">    config.<span class="property">output</span></span><br><span class="line">      .<span class="title function_">path</span>(path.<span class="title function_">resolve</span>(__dirname, <span class="string">&#x27;dist&#x27;</span>)) <span class="comment">// 输出路径</span></span><br><span class="line">      .<span class="title function_">filename</span>(<span class="string">&#x27;my-bundle.js&#x27;</span>); <span class="comment">// 文件名</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="加载器（loader）"><a href="#加载器（loader）" class="headerlink" title="加载器（loader）"></a>加载器（loader）</h2><p>webpack智能去理解js与json文件，而loader的作用就是要去转换webpack不认识的文件，将其转化为webpack认识的模块（将非JavaScript模块转换为Webpack可处理的JavaScript模块的插件。它们被用于处理各种类型的文件，如CSS、图片、字体等，并将它们转化成Webpack能够理解的模块）<br>Loader可以读取不同类型的文件，并返回一个JavaScript对象，该对象包含了文件的内容。这个JavaScript对象可以被Webpack打包成一个JS文件，以便在浏览器上执行。在编写Loader时，你可以使用各种现有的npm包，也可以自己编写简单或复杂的转换功能。<br><strong>Loader的配置通常写在module.rules数组中</strong><br><strong>loader</strong> 有两个属性：</p>
+<ol>
+<li><strong>test 属性，识别出哪些文件会被转换。</strong></li>
+<li><strong>use 属性，定义出在进行转换时，应该使用哪个 loade</strong></li>
+</ol>
+<ul>
+<li><p>在webpack.config.js文件中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="attr">module</span>: &#123;</span><br><span class="line">    <span class="attr">rules</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/\.css$/</span>, <span class="comment">// 识别.css文件</span></span><br><span class="line">        <span class="attr">use</span>: [<span class="string">&#x27;style-loader&#x27;</span>, <span class="string">&#x27;css-loader&#x27;</span>], <span class="comment">// 使用对应的loader去进行转换</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/\.(png|jpg|gif)$/</span>, <span class="comment">// 识别.png，.jpg与.gif文件</span></span><br><span class="line">        <span class="attr">use</span>: [<span class="string">&#x27;url-loader&#x27;</span>], <span class="comment">// 使用对应的loader去进行转换</span></span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p>在vue.config.js中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">configureWebpack</span>: &#123;</span><br><span class="line">    <span class="attr">module</span>: &#123;</span><br><span class="line">      <span class="attr">rules</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">test</span>: <span class="regexp">/\.css$/</span>,</span><br><span class="line">          <span class="attr">use</span>: [<span class="string">&#x27;style-loader&#x27;</span>, <span class="string">&#x27;css-loader&#x27;</span>],</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">test</span>: <span class="regexp">/\.(png|jpg|gif)$/</span>,</span><br><span class="line">          <span class="attr">use</span>: [<span class="string">&#x27;url-loader&#x27;</span>],</span><br><span class="line">        &#125;,</span><br><span class="line">      ],</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="插件（plugin）"><a href="#插件（plugin）" class="headerlink" title="插件（plugin）"></a>插件（plugin）</h2><p>loader 用于转换某些类型的模块，而插件则可以用于执行范围更广的任务。包括：打包优化，资源管理，注入环境变量。<br>想要使用一个插件，你只需要 require() 它，然后把它添加到 plugins 数组中。多数插件可以通过选项(option)自定义。你也可以在一个配置文件中因为不同目的而多次使用同一个插件，这时需要通过使用 new 操作符来创建一个插件实例。</p>
+</li>
+<li><p>在webpack.config.js文件中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">HtmlWebpackPlugin</span> = <span class="built_in">require</span>(<span class="string">&#x27;html-webpack-plugin&#x27;</span>); <span class="comment">// 引入插件</span></span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">&#x27;webpack&#x27;</span>); <span class="comment">// 用于访问内置插件</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">module</span>: &#123;</span><br><span class="line">    <span class="attr">rules</span>: [&#123; <span class="attr">test</span>: <span class="regexp">/\.txt$/</span>, <span class="attr">use</span>: <span class="string">&#x27;raw-loader&#x27;</span> &#125;], <span class="comment">// 加载器</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [<span class="keyword">new</span> <span class="title class_">HtmlWebpackPlugin</span>(&#123; <span class="attr">template</span>: <span class="string">&#x27;./src/index.html&#x27;</span> &#125;)], <span class="comment">// 使用插件</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li><p>在vue .config.js文件中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">CopyWebpackPlugin</span> = <span class="built_in">require</span>(<span class="string">&#x27;copy-webpack-plugin&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">configureWebpack</span>: &#123;</span><br><span class="line">    <span class="attr">plugins</span>: [</span><br><span class="line">      <span class="keyword">new</span> <span class="title class_">CopyWebpackPlugin</span>(&#123;</span><br><span class="line">        <span class="attr">patterns</span>: [</span><br><span class="line">          &#123; <span class="attr">from</span>: <span class="string">&#x27;src/assets&#x27;</span>, <span class="attr">to</span>: <span class="string">&#x27;assets&#x27;</span> &#125;,</span><br><span class="line">        ],</span><br><span class="line">      &#125;),</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="加载器（loader）与插件（plugin）区别"><a href="#加载器（loader）与插件（plugin）区别" class="headerlink" title="加载器（loader）与插件（plugin）区别"></a>加载器（loader）与插件（plugin）区别</h3></li>
+<li><p>Loader 用于处理模块代码，并将其转换为另一种格式。它们通常被用于加载和处理各种文件类型，如 JavaScript、CSS、图片、字体等。Loader 可以将这些文件转换为合法的模块代码，使它们可以被其他模块导入并使用。例如，在处理 CSS 文件时，Loader 可以将 CSS 转换为 JavaScript 对象，或者将其打包成一个单独的 CSS 文件。常见的 Loader 包括：babel-loader、css-loader、file-loader、url-loader 等。</p>
+</li>
+<li><p>Plugin 则是在整个构建过程中，执行各种任务的插件。它们可以用来处理编译器输出、优化代码、提取公共代码等。Plugin 通过监听 Webpack 的事件钩子，在对应的时机执行特定的任务。例如，在打包结束后，可以使用 uglifyjs-webpack-plugin 插件压缩代码，或者使用 html-webpack-plugin 插件生成 HTML 页面。常见的 Plugin 包括：clean-webpack-plugin、copy-webpack-plugin、html-webpack-plugin、uglifyjs-webpack-plugin 等。</p>
+</li>
+</ul>
+<p>总的来说，Loader 是用来处理模块代码的转换，而 Plugin 则是用来执行各种构建相关的任务。它们共同协作，实现了 Webpack 对模块的解析、编译、打包以及优化等一系列功能。</p>
+<h2 id="模式（mode）"><a href="#模式（mode）" class="headerlink" title="模式（mode）"></a>模式（mode）</h2><p>Webpack 的 mode 配置是用来指定构建模式的选项。它可以设置为 “development”、”production” 或 “none”，每个模式都会应用不同的默认配置。</p>
+<ul>
+<li>development 模式下，Webpack 会开启开发者模式，提供更好的调试和开发体验。它会启用一些对开发有帮助的功能，例如生成完整的 source map、保留代码中的注释和调试信息等。此外，Webpack 会以快速而简洁的方式打包代码，优化构建效率。</li>
+<li>production 模式下，Webpack 会启用优化策略，以生成最小化、优化过的代码。它会自动进行各种优化操作，包括代码压缩、tree shaking、作用域提升等，以提高生产环境的性能和加载速度。此外，Webpack 会自动移除调试信息和注释，减小输出文件的体积。</li>
+<li>none 模式下，Webpack 不会应用任何默认配置，需要手动配置所有选项。这个模式适合在已经具备了自定义配置的情况下使用，可以根据需要自由地进行个性化配置。</li>
+</ul>
+<p>要设置 Webpack 的构建模式，可以在配置文件（如 webpack.config.js）中使用 mode 选项：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">  mode: &#x27;development&#x27;, // 设置为 development 模式</span><br><span class="line">  // 其他配置 ...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>通过设置合适的 mode，可以根据开发环境或生产环境的需求来优化构建输出。由于 mode 的不同，Webpack 将自动应用相应的默认配置和优化策略，简化了配置过程，提高了构建效率。<br><strong>process.env.NODE_ENV</strong><br>process.env.NODE_ENV 是一个环境变量，用于指定 Node.js 运行时的环境。在 Webpack 构建过程中，可以通过这个环境变量来区分不同的构建模式，以便开发和生产环境的优化。</p>
+<h2 id="浏览器兼容性-browser-compatibility"><a href="#浏览器兼容性-browser-compatibility" class="headerlink" title="浏览器兼容性(browser compatibility)"></a>浏览器兼容性(browser compatibility)</h2><p>Webpack 支持所有符合 es5标准的浏览器（不支持 IE8 及以下版本）。webpack 的 import() 和 require.ensure() 需要 Promise。如果你想要支持旧版本浏览器，在使用这些表达式之前，还需要 <a target="_blank" rel="noopener" href="https://webpack.docschina.org/guides/shimming/">提前加载 polyfill</a>。</p>
+<h2 id="环境-environment"><a href="#环境-environment" class="headerlink" title="环境(environment)"></a>环境(environment)</h2><p>Webpack 5 运行于 Node.js v10.13.0+ 的版本。</p>
+<h1 id="webpack的经典问题"><a href="#webpack的经典问题" class="headerlink" title="webpack的经典问题"></a>webpack的经典问题</h1><h2 id="1-loader是怎样去执行的，我如果要改变某些的执行该怎么办？"><a href="#1-loader是怎样去执行的，我如果要改变某些的执行该怎么办？" class="headerlink" title="1.loader是怎样去执行的，我如果要改变某些的执行该怎么办？"></a>1.loader是怎样去执行的，我如果要改变某些的执行该怎么办？</h2><p>loader的执行顺序为从右到左，从下到上，如果想要改变特定的执行顺序，可以通过<strong>enfore</strong>来强制控制Loader的执行顺序 （<strong>pre</strong>表示在所有正常的loader执行之前执行，<strong>post</strong>表示在之后执行）、</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">module</span>: &#123;</span><br><span class="line">  <span class="attr">rules</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">test</span>: <span class="regexp">/\.js$/</span>,</span><br><span class="line">      <span class="attr">enforce</span>: <span class="string">&#x27;pre&#x27;</span>, <span class="comment">// 注意这里</span></span><br><span class="line">      <span class="attr">loader</span>: <span class="string">&#x27;some-other-loader&#x27;</span>, <span class="comment">// 先执行</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">test</span>: <span class="regexp">/\.js$/</span>,</span><br><span class="line">      <span class="attr">loader</span>: <span class="string">&#x27;babel-loader&#x27;</span>, <span class="comment">// 后执行</span></span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="2-什么是文件指纹，文件指纹有什么用，怎么用"><a href="#2-什么是文件指纹，文件指纹有什么用，怎么用" class="headerlink" title="2.什么是文件指纹，文件指纹有什么用，怎么用"></a>2.什么是文件指纹，文件指纹有什么用，怎么用</h2><p>文件指纹是指文件打包后的一连串后缀<br>它的作用</p>
+<ul>
+<li><p><strong>版本管理</strong>：在发布版本时，通过文件指纹来区分 修改的文件 和 未修改的文件</p>
+</li>
+<li><p><strong>使用缓存</strong>：浏览器通过文件指纹是否改变来决定使用缓存文件还是请求新文件</p>
+<h2 id="3-打包-babel-的原理"><a href="#3-打包-babel-的原理" class="headerlink" title="3.打包(babel)的原理"></a>3.打包(babel)的原理</h2><p>打包（Babel）就是将代码转译成目标代码<br>打包（Babel）实现功能的流程为 解析-转换-生产</p>
+</li>
+<li><p><strong>解析</strong> : 根据代码生成对应的AST结构（进行代码分析，将代码分割成token流（语法单元数组），再根据token流生成对应的AST）</p>
+</li>
+<li><p><strong>转换</strong>：遍历AST节点生成新的AST节点</p>
+</li>
+<li><p><strong>生产</strong>: 根据新的AST生成目标代码</p>
+<h2 id="4-什么是source-map，如何使用"><a href="#4-什么是source-map，如何使用" class="headerlink" title="4.什么是source map，如何使用"></a>4.什么是source map，如何使用</h2><p>source map是将编译打包后的代码映射回源码，可以通过devtool配置项来进行配置，或者通过SourceMapDevToolPlugin控制（devtool与SourceMapDevToolPlugin不能同时的去使用，因为devtool中内置了SourceMapDevToolPlugin插件）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="comment">// 其他配置项...</span></span><br><span class="line">  </span><br><span class="line">  <span class="attr">devtool</span>: <span class="string">&#x27;eval-source-map&#x27;</span>,</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 其他配置项...</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="5-HMR-热更新-原理"><a href="#5-HMR-热更新-原理" class="headerlink" title="5.HMR(热更新)原理"></a>5.HMR(热更新)原理</h2><p>HMR（Hot Module Replacement，热模块替换）是一种在应用程序运行中动态更新代码的技术。它能够使得应用程序无需进行重新加载和刷新页面即可实现代码的更新，从而提高了开发效率并提供更好的用户体验。<br>热更新的步骤</p>
+</li>
+</ul>
+<ol>
+<li>首先，webpack 在构建过程中生成一个 Manifest 文件，其中包含了所有文件的 hash 值，以及对应的模块 ID 和 Chunk ID。</li>
+<li>当应用程序启动时，会向 webpack Dev Server 发送一个 WebSocket 请求，请求获取当前应用程序的最新代码更新。</li>
+<li>在收到更新代码后，webpack Dev Server 会解析新的代码模块并与旧代码模块进行比较。如果发现有变化，则通过 HMR Runtime API 自动生成新的代码模块，并更新相应的 DOM 节点或组件。</li>
+</ol>
+<p>在上述步骤中，HMR 的核心是利用了 webpack 打包的模块化机制，将代码划分为多个模块。当某个模块发生变化时，只需要更新这个模块，而不需要更新整个应用程序。同时，HMR 也利用了前端框架的组件化机制，将组件作为最小的渲染单元，实现了局部更新并避免了全局刷新的性能问题。</p>
+<h2 id="6-什么是Tree-shaking"><a href="#6-什么是Tree-shaking" class="headerlink" title="6.什么是Tree shaking"></a>6.什么是Tree shaking</h2><p>Tree shaking 是一种在 JavaScript 模块打包过程中用于消除未使用代码的优化技术。它通过静态分析模块的依赖关系，识别出那些没有被引用或使用的代码，然后从最终的打包结果中剔除这些无用的代码，以减小打包文件的体积。<br><strong>tree  shaking是如何判断判断那些代码未引用？</strong><br>先收集模块导出变量并记录到模块依赖关系图中，再遍历模块依赖关系图并标记那些导出变量有没有被使用，最后利用treser将没有被用到的导出语句删除<br><strong>Tree shaking 的好处有两个主要方面：</strong></p>
+<ol>
+<li><p>减小打包文件的体积：通过消除未使用的代码，可以减少打包文件的大小，提升加载速度和网页性能。</p>
+</li>
+<li><p>优化代码的可维护性和可读性：移除无用代码可以使代码更加清晰和易于维护，减少不必要的复杂性。</p>
+<h2 id="7-如何使用webpack来优化项目"><a href="#7-如何使用webpack来优化项目" class="headerlink" title="7.如何使用webpack来优化项目"></a>7.如何使用webpack来优化项目</h2></li>
+<li><p>使用 Webpack Dev Server：Webpack Dev Server 是一个轻量级的开发服务器，它能够实现快速的构建重建和模块热替换。通过配置 Dev Server，可以将构建后的文件存储在内存中并提供 HTTP 访问。这样可以大大加快构建速度，并在代码修改时实时更新。</p>
+</li>
+<li><p>启用缓存：在开发环境中，我们可以启用缓存来提高构建速度。通过设置 cache 选项为 true，Webpack 会缓存一些中间结果，减少重复的工作。</p>
+</li>
+<li><p>使用轻量的 Source map：在开发环境中，使用轻量级的 Source map 可以提高构建速度。通过配置 Webpack 的 devtool 选项为 ‘eval-source-map’ 或 ‘cheap-module-eval-source-map’，可以生成快速而简单的 Source map，方便调试代码。</p>
+</li>
+<li><p>使用模块热替换（Hot Module Replacement）：模块热替换是 Webpack 提供的一个强大功能，它允许在不刷新整个页面的情况下，只替换发生改变的模块。通过配置 Webpack 的 hot 选项为 true，并使用 HotModuleReplacementPlugin 插件，可以启用模块热替换功能。</p>
+</li>
+<li><p>缩小构建目标：在开发环境中，可以通过减少不必要的处理和优化来加快构建速度。例如，可以将 Webpack 的 target 选项设置为 ‘web’ 或 ‘webworker’，避免处理其他平台相关的代码。</p>
+</li>
+<li><p>使用多进程/多实例构建：通过使用 thread-loader 或 happypack 插件，可以将部分耗时的构建任务分配给多个子进程或实例，以提高构建速度。</p>
+</li>
+<li><p>避免不必要的插件和处理：在开发环境中，可以暂时禁用一些生产环境才需要的处理和插件，如代码压缩、Tree Shaking、图片压缩等，以节省构建时间。</p>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/09/24/webpack/">查看全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-判断数据类型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -727,72 +906,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/05/17/ts%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD/">查看全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-css.变量" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/04/08/css.%E5%8F%98%E9%87%8F/">css变量</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-        
-        <!--显示阅读次数完毕-->
-        
-        <a href="/2023/04/08/css.%E5%8F%98%E9%87%8F/" class="archive-article-date">
-  	<time datetime="2023-04-08T08:57:58.823Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="变量申明"><a href="#变量申明" class="headerlink" title="变量申明"></a>变量申明</h2><p>声明变量的时候，变量名前面要加两根连词线（–）。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/04/08/css.%E5%8F%98%E9%87%8F/">查看全文 >></a>
         </p>
       
 
